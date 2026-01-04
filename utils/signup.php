@@ -1,10 +1,18 @@
 <?php
-ini_set("display_errors", 0);
 
-header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Credentials: true");
+
+ini_set("display_errors", 0);
 
 if ($_SERVER['REQUEST_METHOD'] === "OPTIONS") {
   http_response_code(200);
+  exit;
+}
+
+//session_start();
+if (isset($_SESSION['user'])) {
+  header('Location: /');
   exit;
 }
 
@@ -17,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $passwordConfirmation = htmlspecialchars($_POST['confirmation'] ?? '');
     $tel = htmlspecialchars($_POST['tel'] ?? '');
     $role = htmlspecialchars($_POST['role'] ?? '');
-    error_log("$firstName $lastName $email $password $passwordConfirmation $tel $role", 3, "./error_log.log");
+
     if (
       $firstName && $lastName
       && $email && $tel && $password
@@ -37,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         ]);
         exit;
       }
-      include __DIR__ . "/../utils/connexion_db.php";
+      require __DIR__ . "/../utils/connexion_db.php";
       // je vérifie si un utlisateur avec de tel identtifiant exist déja.
       $sql = "SELECT * FROM Users WHERE tel = :tel OR email = :email";
       $stmt = $pdo->prepare($sql);

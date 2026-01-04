@@ -1,2 +1,8 @@
-      -
- signup.php signup.php -> Error some variables are null !Khadim Ndiaye khadim@gmail.com 0540 0540 +221775555719 vendeurKhadim Ndiaye khadim@gmail.com 0540 0540 +221775555719 vendeurKhadim Ndiaye khadim@gmail.com 0540 0540 +221775555719 client
+
+ /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
+ /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
+ /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
+ /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
+ connexion-db.php -> SQLSTATE[HY000] [2002] Connection refused
+ connexion-db.php -> SQLSTATE[HY000] [2002] Connection refused
+ connexion-db.php -> SQLSTATE[HY000] [2002] Connection refused

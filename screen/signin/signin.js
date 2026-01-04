@@ -7,22 +7,19 @@ const loginForm = document.getElementById("login-form");
 const signupError = document.getElementById("signup-error");
 const loginError = document.getElementById("login-error");
 
-const HOST = "10.198.51.135";
-
 signupForm.onsubmit = async (e) => {
   e.preventDefault();
   const signupFormData = new FormData(signupForm);
-  loginForm.classList.remove("show", "active");
-  signupForm.classList.add("show", "active");
   signupError.classList.remove("d-none");
   if (signupFormData.get("password") !== signupFormData.get("confirmation")) {
     signupError.innerText = "Erreur les mot de passes ne correspondent pas !";
     return;
   }
   try {
-    const res = await fetch(`http://${HOST}:8081/signup.php`, {
-      method: "post",
+    const res = await fetch(`/projet/utils/signup.php`, {
+      method: "POST",
       body: signupFormData,
+      credentials: "include",
     });
     const data = await res.json();
     console.log(data);
@@ -32,9 +29,6 @@ signupForm.onsubmit = async (e) => {
       if (data.success) {
         signupError.classList.remove("text-danger");
         signupError.classList.add("text-success");
-        setTimeout(() => {
-          window.location = "/";
-        }, 2500);
       }
     } else {
       throw new Error("data is null !");
@@ -48,13 +42,13 @@ signupForm.onsubmit = async (e) => {
 loginForm.onsubmit = async (e) => {
   e.preventDefault();
   const loginFormData = new FormData(loginForm);
-  signupForm.classList.remove("show", "active");
-  loginForm.classList.add("show", "active");
+
   loginError.classList.remove("d-none");
   try {
-    const res = await fetch(`http://${HOST}:8081/login.php`, {
-      method: "post",
+    const res = await fetch(`/projet/utils/login.php`, {
+      method: "POST",
       body: loginFormData,
+      credentials: "include",
     });
     const data = await res.json();
     console.log(data);
@@ -64,6 +58,9 @@ loginForm.onsubmit = async (e) => {
       if (data.success) {
         loginError.classList.remove("text-danger");
         loginError.classList.add("text-success");
+        setTimeout(() => {
+          window.location.href = "/projet";
+        }, 2500);
       }
     } else {
       throw new Error("Data is null !");

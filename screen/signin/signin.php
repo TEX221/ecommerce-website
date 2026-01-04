@@ -1,6 +1,6 @@
 <?php
-
-if (isset($_SESSION['userId'])) {
+session_start();
+if (isset($_SESSION['user'])) {
   header('Location: /');
   exit;
 }
@@ -17,6 +17,8 @@ if (isset($_SESSION['userId'])) {
 </head>
 
 <body class="bg-light">
+
+  <?php require __DIR__ . "/../../components/header.php" ?>
 
   <main class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="card shadow-lg border-0 w-100" style="max-width: 420px;">
@@ -109,6 +111,8 @@ if (isset($_SESSION['userId'])) {
       </div>
     </div>
   </main>
+
+  <?php require __DIR__ . "/../../components/foooter.php" ?>
 
   <script src="signin.js"></script>
   <script src="../../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>

@@ -1,20 +1,17 @@
 <?php
+session_start();
 
-if (!isset($_SESSION['userId'])) {
+if (!isset($_SESSION['user'])) {
   header('Location: screen/signin/signin.php');
   exit;
 }
 
 
-if (isset($_SESSION['role'])) {
-  $role = $_SESSION['role'] ?? '';
-  if ($role === 'admin') {
-    header('Location: admin/index.php');
-  } else if ($role === 'vendeur') {
-    header('Location: vendeur/index.php');
-  } else {
-    header('Location: client/index.php');
-  }
+$role = $_SESSION['user']['role'] ?? '';
+if ($role === 'admin') {
+  header('Location: admin/index.php');
+} else if ($role === 'vendeur') {
+  header('Location: vendeur/index.php');
 } else {
-  header('Location: screen/signin.php');
+  header('Location: client/index.php');
 }
