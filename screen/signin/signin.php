@@ -12,8 +12,8 @@ if (isset($_SESSION['userId'])) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link rel="stylesheet" href="../bootstrap-5.3.8-dist/css/bootstrap.min.css" />
+  <title>Commerciale</title>
+  <link rel="stylesheet" href="../../bootstrap-5.3.8-dist/css/bootstrap.min.css" />
 </head>
 
 <body class="bg-light">
@@ -36,16 +36,17 @@ if (isset($_SESSION['userId'])) {
           <div class="tab-pane fade show active" id="login">
             <h4 class="text-center mb-3">Bienvenue 👋</h4>
 
-            <form method="post" class="login-form">
+            <form id="login-form">
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" placeholder="email">
+                <input name="email" type="email" class="form-control" placeholder="email" required>
                 <label>Email</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" placeholder="password">
+                <input name="password" type="password" class="form-control" placeholder="password" required>
                 <label>Mot de passe</label>
               </div>
+              <p id="login-error" class="d-none text-center h6 my-2 text-danger"></p>
 
               <button class="btn btn-primary w-100 py-2">Se connecter</button>
             </form>
@@ -55,39 +56,62 @@ if (isset($_SESSION['userId'])) {
           <div class="tab-pane fade" id="register">
             <h4 class="text-center mb-3">Créer un compte ✨</h4>
 
-            <form method="post" class="signup-form">
+            <form id="signup-form">
+              <div class="container d-flex flex-column justify-content-center align-items-center my-3 mx-auto w-100">
+                <h4 class="text-center text-secondary">Role</h4>
+
+                <div class="d-flex flex-row justify-content-around  w-100">
+
+                  <div class="p-3">
+                    <input type="radio" value="client" name="role" required />
+                    <label>Client</label>
+                  </div>
+                  <div class="p-3">
+                    <input type="radio" value="vendeur" name="role" required />
+                    <label>Vendeur</label>
+                  </div>
+                </div>
+
+              </div>
+
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="firstName">
-                <label>Prénom </label>
+                <input name="firstName" type="text" class="form-control" placeholder="Prénom" required minlength="2" />
+                <label>Prénom</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="text" class="form-control" placeholder="lastName" />
-                <label>Nom </label>
+                <input name="lastName" type="text" class="form-control" placeholder="nom" required minlength="2" />
+                <label>Nom</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="email" class="form-control" placeholder="email">
+                <input name="tel" type="tel" class="form-control" placeholder="+2217XXXXXXXX" required minlength="13" />
+                <label>Numéro de téléphone</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input name="email" type="email" class="form-control" placeholder="Email" required minlength="11" />
                 <label>Email</label>
               </div>
 
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" placeholder="password">
+                <input name="password" type="password" class="form-control" placeholder="Password" required minlength="4" maxlength="256" />
                 <label>Mot de passe</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" placeholder="Confirmation">
+                <input name="confirmation" type="password" class="form-control" placeholder="Confirmation" required minlength="4" maxlength="256" />
                 <label>Confirmation du mot de passe</label>
               </div>
-              <p class="error-message d-none text-center h4  text-danger"></p>
+              <p id="signup-error" class="d-none text-center my-2 h6 text-danger"></p>
               <button class="btn btn-success w-100 py-2">S'inscrire</button>
             </form>
+
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <script src="./signin.js"></script>
-  <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="signin.js"></script>
+  <script src="../../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

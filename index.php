@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_SESSION['userId'])) {
-  header('Location: screen/signin.php');
+  header('Location: screen/signin/signin.php');
   exit;
 }
 
