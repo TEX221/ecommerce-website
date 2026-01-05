@@ -1,15 +1,16 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['idUser'])) {
   header('Location: /projet/screen/signin/signin.php');
   exit;
 }
-$user = &$_SESSION['user'];
-$firstName = $user['firstName'] ?? '';
-$lastName = $user['lastName'] ?? '';
-$email = $user['email'] ?? '';
-$role = $user['role'] ?? '';
+$idUser = $_SESSION['idUser'];
+$firstName = $_SESSION['firstName'] ?? '';
+$lastName = $_SESSION['lastName'] ?? '';
+$email = $_SESSION['email'] ?? '';
+$tel = $_SESSION['tel'] ?? '';
+$role = $_SESSION['role'] ?? '';
 
 $isAdmin = $role === "admin";
 
@@ -33,6 +34,8 @@ $clients = &getClients($pdo);
 
   <main class="container d-flex justify-content-center mt-2  min-vh-100">
     <div class="card shadow-lg border-0 w-100" style="max-width: 800px;">
+      <h5 class="text-center text-primary my-2"> Bienvenue <?= $firstName ?> <?= $lastName ?></h5>
+
       <div class="card-body p-4">
         <ul class="nav nav-pills nav-fill mb-4 d-flex justify-content-center" role="tablist">
           <li class="nav-item" style="max-width: 250px;">
@@ -50,24 +53,23 @@ $clients = &getClients($pdo);
         </ul>
 
         <div class="tab-content">
-
           <!-- Liste Client -->
-          <div class="tab-pane fade show active" id="liste-client">
-            <?php require __DIR__ . "/../client/listeClient.php" ?>
-          </div>
-          <div class="tab-pane fade" id="edit-profile">
-            <?php require __DIR__ . "/../client/updateClient.php" ?>
-          </div>
-          <div class="tab-pane fade" id="add-client">
-            <?php require __DIR__ . "/../client/addClient.php" ?>
-          </div>
+          <?php require __DIR__ . "/../client/listeClient.php" ?>
+
+          <?php require __DIR__ . "/../client/updateClient.php" ?>
+          <?php require __DIR__ . "/../client/addClient.php" ?>
+
         </div>
+
       </div>
+
     </div>
   </main>
 
   <?php require __DIR__ . "/../components/foooter.php" ?>
+
   <script src="../screen/signin/signin.js"></script>
+  <script src="js/updateClient.js"></script>
   <script src="../bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

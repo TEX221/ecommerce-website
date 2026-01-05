@@ -1,8 +1,5 @@
 
- /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
- /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
- /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
- /projet/client/index.phpSQLSTATE[42S22]: Column not found: 1054 Unknown column 'client' in 'WHERE'
- connexion-db.php -> SQLSTATE[HY000] [2002] Connection refused
- connexion-db.php -> SQLSTATE[HY000] [2002] Connection refused
- connexion-db.php -> SQLSTATE[HY000] [2002] Connection refused
+ connexion-db.php -> SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
+ connexion-db.php -> SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)-
+ signup.php SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'ablaye@gmail.com' for key 'email'-
+ signup.php SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'ablaye@gmail.com' for key 'email'

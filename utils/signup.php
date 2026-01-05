@@ -10,16 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] === "OPTIONS") {
   exit;
 }
 
-//session_start();
-if (isset($_SESSION['user'])) {
-  header('Location: /');
+session_start();
+if (isset($_SESSION['idUser'])) {
+  header('Location: /ecommerce-website/');
   exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
   try {
-    $firstName = htmlspecialchars($_POST['firstName'] ?? '');
-    $lastName = htmlspecialchars($_POST['lastName'] ?? '');
+    $firstName = filter_var($_POST['firstName'] ?? '');
+    $lastName = filter_var($_POST['lastName'] ?? '', FILTER_SANITIZE_STRING);
     $email = htmlspecialchars($_POST['email'] ?? '');
     $password = htmlspecialchars($_POST['password'] ?? '');
     $passwordConfirmation = htmlspecialchars($_POST['confirmation'] ?? '');
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
       if (!empty($user)) {
         echo json_encode([
           "message" => "Un utlisateur avec ces mêmes idtentifiants existe déja !",
-          "succes" => false
+          "success" => true
         ]);
         exit;
       } else {

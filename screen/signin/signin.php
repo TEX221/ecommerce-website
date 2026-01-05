@@ -1,7 +1,7 @@
 <?php
 session_start();
-if (isset($_SESSION['user'])) {
-  header('Location: /');
+if (isset($_SESSION['idUser'])) {
+  header('Location: /ecommerce-website');
   exit;
 }
 

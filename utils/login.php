@@ -80,7 +80,13 @@ function logIn(PDO &$pdo, string $email, string $password)
       exit;
     }
     // le mot de passe est donc correct.
-    $_SESSION['user'] = $user;
+    $_SESSION['idUser'] = $user['idUser'];
+    $_SESSION['firstName'] = $user['firstName'];
+    $_SESSION['lastName'] = $user['lastName'];
+    $_SESSION['email'] = $user['email'];
+    $_SESSION['tel'] = $user['tel'];
+    $_SESSION['role'] = $user['role'];
+
     // j'enregistre la session. 
     echo json_encode([
       "message" => "Connexion réussie",

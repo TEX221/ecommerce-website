@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user'])) {
-  header('Location: screen/signin/signin.php');
+if (!isset($_SESSION['idUser'])) {
+  header('Location: /ecommerce-website/screen/signin/signin.php');
   exit;
 }
 
 
-$role = $_SESSION['user']['role'] ?? '';
+$role = $_SESSION['role'] ?? '';
 if ($role === 'admin') {
   header('Location: admin/index.php');
 } else if ($role === 'vendeur') {
